@@ -1,0 +1,24 @@
+{
+    "env": {
+        "commonjs": true,
+        "es2021": true,
+        "node": true,
+        "mocha": true
+    },
+    "extends": [
+        "airbnb-base",
+        "plugin:chai-friendly/recommended"
+
+    ],
+    "plugins": [
+      "chai-friendly"
+    ],
+
+    "parserOptions": {
+        "ecmaVersion": 13
+    },
+    "rules": {
+        "no-console":"off"
+
+    }
+}

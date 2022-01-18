@@ -1,0 +1,60 @@
+{
+  "name": "cli-bitcoin",
+  "version": "1.0.0",
+  "description": "cli converting bitcoin to Real",
+  "main": "index.js",
+  "scripts": {
+    "clear": "rimraf bin",
+    "build": "npm run clear && npx babel --out-dir bin src --presets=@babel/env",
+    "build:watch": "npm run build -- --watch",
+    "lint": "./node_modules/.bin/eslint src/*.js",
+    "test": "npx mocha -w --timeout 30000 tests/**/*.test.js",
+    "test:cov": "npx nyc npx mocha --parallel tests/**/*.test.js"
+  },
+  "preferGlobal": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pravtz/cli-bitcoin.git"
+  },
+  "bin": {
+    "cli-bitcoin": "bin/main.js"
+  },
+  "keywords": [
+    "cli",
+    "bitcoin",
+    "ethereum",
+    "coin",
+    "cryptocurrencies",
+    "traders",
+    "javascript",
+    "TDD",
+    "js"
+  ],
+  "author": "@pravtz",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/cli": "^7.16.8",
+    "@babel/core": "^7.16.7",
+    "@babel/plugin-transform-runtime": "^7.16.8",
+    "@babel/preset-env": "^7.16.8",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^8.2.3",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "chai": "^4.3.4",
+    "eslint": "^8.6.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.25.4",
+    "mocha": "^9.1.3",
+    "nyc": "^15.1.0",
+    "rimraf": "^3.0.2",
+    "sinon": "^12.0.1"
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.16.7",
+    "commander": "^8.3.0",
+    "eslint-plugin-chai-friendly": "^0.7.2",
+    "request": "^2.88.2"
+  }
+}
