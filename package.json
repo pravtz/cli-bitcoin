@@ -1,7 +1,7 @@
 {
   "name": "cli-bitcoin",
   "version": "1.0.0",
-  "description": "cli converting bitcoin to Real",
+  "description": "Search for cryptocurrency information",
   "main": "index.js",
   "scripts": {
     "clear": "rimraf bin",
