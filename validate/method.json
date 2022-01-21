@@ -1,0 +1,49 @@
+{
+  "method": [
+    {
+      "method": "ticker",
+      "description": "resumo de operações executadas",
+      "return_keys": [],
+      "description_keys":[]
+    },
+    {
+      "method": "orderbook",
+      "description": "livro de negociações, ordens abertas de compra e venda",
+      "return_keys": [],
+      "description_keys":[]
+    },
+    {
+      "method": "trades",
+      "description": "histórico de operações executadas",
+      "keys": [
+        "date",
+        "price",
+        "amount",
+        "tid",
+        "type"
+      ],
+      "description_keys": [
+        {
+          "key": "date",
+          "descriprion": "Data e hora da negociação em Era Unix"
+        },
+        {
+          "key": "price",
+          "descriprion": "Preço unitário da negociação."
+        },
+        {
+          "key": "amount",
+          "descriprion": "Quantidade da negociação"
+        },
+        {
+          "key": "tid",
+          "descriprion": "Identificador da negociação."
+        },
+        {
+          "key": "type",
+          "descriprion": "Indica a ponta executora da negociação - buy or sell"
+        }
+      ]
+    }
+  ]
+}

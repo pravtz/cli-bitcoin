@@ -1,0 +1,520 @@
+{
+  "coins": [
+    {
+      "coin": "AAVE",
+      "currency": "Aave"
+    },
+    {
+      "coin": "ACMFT",
+      "currency": "AC Milan"
+    },
+    {
+      "coin": "ACORDO01",
+      "currency": "None"
+    },
+    {
+      "coin": "ADA",
+      "currency": "Cardano"
+    },
+    {
+      "coin": "ALCX",
+      "currency": "Alchemix"
+    },
+    {
+      "coin": "ALGO",
+      "currency": "Algorand"
+    },
+    {
+      "coin": "ALICE",
+      "currency": "MyNeighborAlice"
+    },
+    {
+      "coin": "ALLFT",
+      "currency": "Alliance"
+    },
+    {
+      "coin": "AMFT",
+      "currency": "Aston Martin Cognizant"
+    },
+    {
+      "coin": "AMP",
+      "currency": "Amp"
+    },
+    {
+      "coin": "ANKR",
+      "currency": "ANKR"
+    },
+    {
+      "coin": "ARGFT",
+      "currency": "Argentine Football Association"
+    },
+    {
+      "coin": "ASRFT",
+      "currency": "AS Roma"
+    },
+    {
+      "coin": "ATMFT",
+      "currency": "Fan Token ATM"
+    },
+    {
+      "coin": "ATOM",
+      "currency": "Cosmos"
+    },
+    {
+      "coin": "AUDIO",
+      "currency": "Audius"
+    },
+    {
+      "coin": "AVAX",
+      "currency": "Avalanche"
+    },
+    {
+      "coin": "AXS",
+      "currency": "Axie Infinity"
+    },
+    {
+      "coin": "BAL",
+      "currency": "Balancer"
+    },
+    {
+      "coin": "BAND",
+      "currency": "Band Protocol"
+    },
+    {
+      "coin": "BARFT",
+      "currency": "FC Barcelona"
+    },
+    {
+      "coin": "BAT",
+      "currency": "Basic Attention token"
+    },
+    {
+      "coin": "BCH",
+      "currency": "Bitcoin Cash"
+    },
+    {
+      "coin": "BLZ",
+      "currency": "Bluzelle"
+    },
+    {
+      "coin": "BNT",
+      "currency": "BANCOR"
+    },
+    {
+      "coin": "BTC",
+      "currency": "Bitcoin"
+    },
+    {
+      "coin": "CAIFT",
+      "currency": "Fan Token CAI"
+    },
+    {
+      "coin": "CHZ",
+      "currency": "Chiliz"
+    },
+    {
+      "coin": "CITYFT",
+      "currency": "Manchester City FC"
+    },
+    {
+      "coin": "COMP",
+      "currency": "Compound"
+    },
+    {
+      "coin": "CRV",
+      "currency": "Curve Dao Token"
+    },
+    {
+      "coin": "CTSI",
+      "currency": "Cartesi"
+    },
+    {
+      "coin": "CVX",
+      "currency": "Convex Finance"
+    },
+    {
+      "coin": "DAI",
+      "currency": "Dai"
+    },
+    {
+      "coin": "DOGE",
+      "currency": "Dogecoin"
+    },
+    {
+      "coin": "DOT",
+      "currency": "Polkadot"
+    },
+    {
+      "coin": "DYDX",
+      "currency": "dYdX"
+    },
+    {
+      "coin": "ENJ",
+      "currency": "Enjin Coin"
+    },
+    {
+      "coin": "ENS",
+      "currency": "Ethereum Name Service"
+    },
+    {
+      "coin": "ETH",
+      "currency": "Ethereum"
+    },
+    {
+      "coin": "FET",
+      "currency": "Fetch.ai"
+    },
+    {
+      "coin": "FIL",
+      "currency": "Filecoin"
+    },
+    {
+      "coin": "FLOKI",
+      "currency": "Floki Inu"
+    },
+    {
+      "coin": "GALA",
+      "currency": "Gala"
+    },
+    {
+      "coin": "GALFT",
+      "currency": "Galatasaray"
+    },
+    {
+      "coin": "GALOFT",
+      "currency": "Clube Atletico Mineiro"
+    },
+    {
+      "coin": "GNO",
+      "currency": "Gnosis"
+    },
+    {
+      "coin": "GODS",
+      "currency": "Gods Unchained"
+    },
+    {
+      "coin": "GRT",
+      "currency": "The Graph"
+    },
+    {
+      "coin": "ICP",
+      "currency": "Internet Computer"
+    },
+    {
+      "coin": "IMOB01",
+      "currency": "None"
+    },
+    {
+      "coin": "IMOB02",
+      "currency": "None"
+    },
+    {
+      "coin": "IMX",
+      "currency": "Immutable X'"
+    },
+    {
+      "coin": "INTERFT",
+      "currency": "Inter Milan"
+    },
+    {
+      "coin": "JUVFT",
+      "currency": "Juventus"
+    },
+    {
+      "coin": "KNC",
+      "currency": "Kyber Network"
+    },
+    {
+      "coin": "KP3R",
+      "currency": "Keep3rV1"
+    },
+    {
+      "coin": "LINK",
+      "currency": "Chainlink"
+    },
+    {
+      "coin": "LPT",
+      "currency": "Livepeer"
+    },
+    {
+      "coin": "LRC",
+      "currency": "Loopring"
+    },
+    {
+      "coin": "LTC",
+      "currency": "Litecoin"
+    },
+    {
+      "coin": "MANA",
+      "currency": "MANA (Decentraland)"
+    },
+    {
+      "coin": "MATIC",
+      "currency": "Polygon"
+    },
+    {
+      "coin": "MBCCSH01",
+      "currency": "Consorcio H01"
+    },
+    {
+      "coin": "MBCCSH02",
+      "currency": "Consorcio H02"
+    },
+    {
+      "coin": "MBCONS01",
+      "currency": "Cota de Consórcio 01"
+    },
+    {
+      "coin": "MBCONS02",
+      "currency": "Cota de Consórcio 02"
+    },
+    {
+      "coin": "MBFP01",
+      "currency": "None"
+    },
+    {
+      "coin": "MBFP02",
+      "currency": "None"
+    },
+    {
+      "coin": "MBFP03",
+      "currency": "None"
+    },
+    {
+      "coin": "MBFP04",
+      "currency": "None"
+    },
+    {
+      "coin": "MBFP05",
+      "currency": "None"
+    },
+    {
+      "coin": "MBPRK01",
+      "currency": "Precatório MB SP01"
+    },
+    {
+      "coin": "MBPRK02",
+      "currency": "Precatório MB SP02"
+    },
+    {
+      "coin": "MBPRK03",
+      "currency": "Precatório MB BR03"
+    },
+    {
+      "coin": "MBPRK04",
+      "currency": "Precatório MB RJ04"
+    },
+    {
+      "coin": "MBPRK05",
+      "currency": "Fluxo de Pagamentos 5"
+    },
+    {
+      "coin": "MBPRK06",
+      "currency": "Precatorio MB BR06"
+    },
+    {
+      "coin": "MBSANTOS01",
+      "currency": "Token da Vila"
+    },
+    {
+      "coin": "MBVASCO01",
+      "currency": "Vasco Token"
+    },
+    {
+      "coin": "MC",
+      "currency": "Merit Circle"
+    },
+    {
+      "coin": "MCO2",
+      "currency": "Moss Carbon Credit"
+    },
+    {
+      "coin": "MENGOFT",
+      "currency": "Flamengo"
+    },
+    {
+      "coin": "MIR",
+      "currency": "Mirror Protocol"
+    },
+    {
+      "coin": "MKR",
+      "currency": "Maker"
+    },
+    {
+      "coin": "NAVIFT",
+      "currency": "Natus Vincere"
+    },
+    {
+      "coin": "OGFT",
+      "currency": "OG eSports"
+    },
+    {
+      "coin": "OMG",
+      "currency": "Omg Network"
+    },
+    {
+      "coin": "OXT",
+      "currency": "Orchid"
+    },
+    {
+      "coin": "PAXG",
+      "currency": "PAX Gold"
+    },
+    {
+      "coin": "PFLFT",
+      "currency": "Professional Fighters League"
+    },
+    {
+      "coin": "PLA",
+      "currency": "PlayDapp"
+    },
+    {
+      "coin": "POLS",
+      "currency": "Polkastarter"
+    },
+    {
+      "coin": "PORFT",
+      "currency": "Portugal National Team FT"
+    },
+    {
+      "coin": "PSGFT",
+      "currency": "Paris Saint-Germain"
+    },
+    {
+      "coin": "QNT",
+      "currency": "Quant"
+    },
+    {
+      "coin": "RACA",
+      "currency": "Radio Caca"
+    },
+    {
+      "coin": "RAD",
+      "currency": "Radicle"
+    },
+    {
+      "coin": "REN",
+      "currency": "Ren"
+    },
+    {
+      "coin": "REQ",
+      "currency": "Request"
+    },
+    {
+      "coin": "SAND",
+      "currency": "The Sandbox"
+    },
+    {
+      "coin": "SAUBERFT",
+      "currency": "Alfa Romeo Racing ORLEN"
+    },
+    {
+      "coin": "SCCPFT",
+      "currency": "Corinthians"
+    },
+    {
+      "coin": "SHIB",
+      "currency": "Shiba Inu"
+    },
+    {
+      "coin": "SLP",
+      "currency": "Smooth Love Potion"
+    },
+    {
+      "coin": "SNX",
+      "currency": "Synthetix"
+    },
+    {
+      "coin": "SOL",
+      "currency": "Solana"
+    },
+    {
+      "coin": "SPELL",
+      "currency": "Spell Token"
+    },
+    {
+      "coin": "SPFCFT",
+      "currency": "SPFC"
+    },
+    {
+      "coin": "STVFT",
+      "currency": "Sint-Truidense Voetbalvereniging"
+    },
+    {
+      "coin": "SUPER",
+      "currency": "SuperFarm"
+    },
+    {
+      "coin": "SUSHI",
+      "currency": "SushiSwap"
+    },
+    {
+      "coin": "THFT",
+      "currency": "Team Heretics"
+    },
+    {
+      "coin": "UFCFT",
+      "currency": "UFC"
+    },
+    {
+      "coin": "UMA",
+      "currency": "Uma"
+    },
+    {
+      "coin": "UNI",
+      "currency": "Uniswap"
+    },
+    {
+      "coin": "USDC",
+      "currency": "USD Coin"
+    },
+    {
+      "coin": "USDP",
+      "currency": "Pax Dollar"
+    },
+    {
+      "coin": "VSPRK01",
+      "currency": "Precatorio VS SP01"
+    },
+    {
+      "coin": "WBTC",
+      "currency": "Wrapped Bitcoin"
+    },
+    {
+      "coin": "WBX",
+      "currency": "WiBX"
+    },
+    {
+      "coin": "WLUNA",
+      "currency": "Wrapped LUNA Token"
+    },
+    {
+      "coin": "XLM",
+      "currency": "Stellar"
+    },
+    {
+      "coin": "XRP",
+      "currency": "XRP"
+    },
+    {
+      "coin": "XTZ",
+      "currency": "Tezos"
+    },
+    {
+      "coin": "YBOFT",
+      "currency": "BSC Young Boys"
+    },
+    {
+      "coin": "YFI",
+      "currency": "yearn.finance"
+    },
+    {
+      "coin": "YGG",
+      "currency": "Yield Guild Games"
+    },
+    {
+      "coin": "ZRX",
+      "currency": "0x"
+    }
+  ]
+}
