@@ -26,6 +26,11 @@ class Repository {
     return data;
   }
 
+  async getDataCuston(url) {
+    const data = await this.makeRequest(`https://www.mercadobitcoin.net/api/${url}`);
+    return data;
+  }
+
   async getDataDaySummary(coin, year, month, day) {
     const data = await this.makeRequest(`https://www.mercadobitcoin.net/api/${coin}/day-summary/${year}/${month}/${day}/`);
     return data;

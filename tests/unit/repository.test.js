@@ -16,6 +16,12 @@ describe('Repository Suit Test', () => {
     expect(await repositoryMock.getData('btc', 'ticker')).to.be.equal(mock.mokeTicker);
   });
 
+  it('shold return an object when calling the getDataCuston with method argument is passad', async () => {
+    expect(await repositoryMock.getDataCuston('btc/trades/1643020542/1643020552')).to.be.equal(mock.moketradesCustonFromAndFromTo);
+    expect(await repositoryMock.getDataCuston('btc/trades/?tid=12930657')).to.be.equal(mock.moketradesCustonTid);
+    expect(await repositoryMock.getDataCuston('btc/trades/?since=12930657')).to.be.equal(mock.moketradesCustonSince);
+  });
+
   it('should return a day-sammary object when calling getDataDaySummary with its arguments', async () => {
     expect(await repositoryMock.getDataDaySummary('btc', '2013', '06', '20')).to.be.equal(mock.mokeSaySummary);
   });
