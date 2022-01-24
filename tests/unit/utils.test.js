@@ -1,6 +1,10 @@
 const { describe, it } = require('mocha');
-const { expect } = require('chai');
+const chai = require('chai');
+const chaiAsPromised = require('chai-as-promised');
 const { ConvertDateToHuman } = require('../../utils/ConvertDate');
+
+const { expect } = chai;
+chai.use(chaiAsPromised);
 
 describe('Util Suit Test', () => {
   context('Convert epoch to human-readable', () => {
@@ -18,6 +22,9 @@ describe('Util Suit Test', () => {
       const result = ConvertDateToHuman(1672531199);
       const expected = '31/12/2022 - 23:59';
       expect(result).to.be.equal(expected);
+    });
+    it('Should return an error when passing the date with the wrong format', () => {
+      expect(() => (ConvertDateToHuman(16409988610))).to.throw('erro no formato da data');
     });
   });
 });
