@@ -3,9 +3,8 @@ const https = require('https');
 class Repository {
   // eslint-disable-next-line class-methods-use-this
   async makeRequest(url) {
-    const chunks = [];
-
     return new Promise((resolve, reject) => {
+      const chunks = [];
       https.get(url, (response) => {
         response.on('data', (data) => {
           chunks.push(data);
