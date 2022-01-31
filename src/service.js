@@ -1,5 +1,6 @@
 const Repository = require('./repository');
-const { ConvertDateToHuman } = require('../utils/ConvertDate');
+const { ConvertDateToHuman, ConvertDateUnixNanoSegundToDateToHuman } = require('../utils/ConvertDate');
+const { formatBRL } = require('../utils/ConvertMoney');
 
 class Service {
   constructor(RepositoryMock) {
@@ -22,19 +23,103 @@ class Service {
     return r;
   }
 
-  async outputText(coin, method) {
-    const { ticker } = await this.getDefault(coin, method);
+  async getOrderbook(coin = 'btc', isDateToHuman = false, isFormatToHuman = false, output = 'text', offers = 'full') {
+    const orderbookFull = await this.repository.getData(coin, 'orderbook');
+    const { asks, bids, timestamp } = orderbookFull;
 
-    const dataHuman = ConvertDateToHuman(ticker.date);
+    if (output === 'json') {
+      if (offers === 'asks') {
+        const jasks = asks.map((ask) => [
+          isFormatToHuman ? formatBRL(ask[0]) : ask[0],
+          ask[1],
+        ]);
+        return {
+          timestamp: isDateToHuman ? ConvertDateUnixNanoSegundToDateToHuman(timestamp) : timestamp,
+          asks: jasks,
+        };
+      }
+      if (offers === 'bids') {
+        const jbids = bids.map((bid) => [
+          isFormatToHuman ? formatBRL(bid[0]) : bid[0],
+          bid[1],
+        ]);
+        return {
+          timestamp: isDateToHuman ? ConvertDateUnixNanoSegundToDateToHuman(timestamp) : timestamp,
+          bids: jbids,
+        };
+      }
+      const jasks = asks.map((ask) => [
+        isFormatToHuman ? formatBRL(ask[0]) : ask[0],
+        ask[1],
+      ]);
+      const jbids = bids.map((bid) => [
+        isFormatToHuman ? formatBRL(bid[0]) : bid[0],
+        bid[1],
+      ]);
+
+      return {
+        timestamp: isDateToHuman ? ConvertDateUnixNanoSegundToDateToHuman(timestamp) : timestamp,
+        asks: jasks,
+        bids: jbids,
+      };
+    }
+
+    if (output === 'text' && offers === 'asks') {
+      const r = asks.map((ask) => `
+        Preço:\t${isFormatToHuman ? formatBRL(ask[0]) : ask[0]}
+        Quant.:\t${ask[1]}`);
+      return `
+      Lista de ofertas de venda, ordenadas do menor para o maior preço.
+      ${isDateToHuman ? ConvertDateUnixNanoSegundToDateToHuman(timestamp) : timestamp}
+      ${r}
+      `;
+    }
+    if (output === 'text' && offers === 'bids') {
+      const r = bids.map((bid) => `
+        Preço:\t${isFormatToHuman ? formatBRL(bid[0]) : bid[0]}
+        Quant.:\t${bid[1]}`);
+      return `
+      Lista de ofertas de compras, ordenadas do maior para o menor preço.
+      ${isDateToHuman ? ConvertDateUnixNanoSegundToDateToHuman(timestamp) : timestamp}
+      ${r}
+      `;
+    }
+    const rAsks = asks.map((ask) => `\nPreço: ${isFormatToHuman ? formatBRL(ask[0]) : ask[0]} | Quant.: ${ask[1]}`);
+    const rBids = bids.map((bid) => `\nPreço: ${isFormatToHuman ? formatBRL(bid[0]) : bid[0]} | Quant.: ${bid[1]}`);
     return `
-      high: ${ticker.high}
-      low: ${ticker.low}
+    ${isDateToHuman ? ConvertDateUnixNanoSegundToDateToHuman(timestamp) : timestamp}
+    Lista de ofertas de venda, ordenadas do menor para o maior preço:
+    ${rAsks}
+
+    ${isDateToHuman ? ConvertDateUnixNanoSegundToDateToHuman(timestamp) : timestamp}
+    Lista de ofertas de compras, ordenadas do maior para o menor preço:
+    ${rBids}
+    `;
+  }
+
+  async getTicker(coin = 'btc', isDateToHuman = false, isFormatToHuman = false, output = 'text') {
+    const { ticker } = await this.repository.getData(coin, 'ticker');
+    if (output === 'json') {
+      return {
+        high: isFormatToHuman ? formatBRL(ticker.high) : ticker.high,
+        low: isFormatToHuman ? formatBRL(ticker.low) : ticker.low,
+        vol: ticker.vol,
+        last: isFormatToHuman ? formatBRL(ticker.last) : ticker.last,
+        buy: isFormatToHuman ? formatBRL(ticker.buy) : ticker.buy,
+        sell: isFormatToHuman ? formatBRL(ticker.sell) : ticker.sell,
+        open: isFormatToHuman ? formatBRL(ticker.open) : ticker.open,
+        date: isDateToHuman ? ConvertDateToHuman(ticker.date) : ticker.date,
+      };
+    }
+    return `
+      high: ${isFormatToHuman ? formatBRL(ticker.high) : ticker.high}
+      low: ${isFormatToHuman ? formatBRL(ticker.low) : ticker.low}
       vol: ${ticker.vol}
-      last: ${ticker.last}
-      buy: ${ticker.buy},
-      sell: ${ticker.sell},
-      open: ${ticker.open},
-      date: ${dataHuman}
+      last: ${isFormatToHuman ? formatBRL(ticker.last) : ticker.last}
+      buy: ${isFormatToHuman ? formatBRL(ticker.buy) : ticker.buy}
+      sell: ${isFormatToHuman ? formatBRL(ticker.sell) : ticker.sell}
+      open: ${isFormatToHuman ? formatBRL(ticker.open) : ticker.open}
+      date: ${isDateToHuman ? ConvertDateToHuman(ticker.date) : ticker.date}
     `;
   }
 }
