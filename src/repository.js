@@ -21,7 +21,7 @@ class Repository {
   async getData(coin, method) {
     const Coin = coin || 'btc';
     const Method = method || 'ticker';
-    const data = await this.makeRequest(`https://www.mercadobitcoin.net/api/${Coin}/${Method}/`);
+    const data = await this.makeRequest(`https://www.mercadobitcoin.net/api/${Coin}/${Method}`);
     return data;
   }
 
