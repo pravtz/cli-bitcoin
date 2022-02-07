@@ -4,7 +4,7 @@ const { repositoryMock, mock } = require('../mokes/main.mock');
 
 describe('Repository Suit Test', () => {
   it('should call the specified url when makeRequest is called', async () => {
-    const result = await repositoryMock.makeRequest('https://www.mercadobitcoin.net/api/btc/ticker/');
+    const result = await repositoryMock.makeRequest('https://www.mercadobitcoin.net/api/btc/ticker');
     const expected = mock.mokeTicker;
     expect(result).to.be.equal(expected);
   });
