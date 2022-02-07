@@ -12,15 +12,31 @@ class Service {
     return r;
   }
 
-  async getTrades(coin, method, from, fromTo, tid, since) {
+  async getTrades(
+    from,
+    fromTo,
+    tid,
+    since,
+    coin = 'btc',
+    isDateToHuman = false,
+    isFormatToHuman = false,
+  ) {
     const ifFrom = from ? `/${from}` : '';
     const ifFromTo = fromTo ? `/${fromTo}` : '';
     const ifTid = tid && !since ? `/?tid=${tid}` : '';
     const ifSince = since && !tid ? `/?since=${since}` : '';
 
-    const url = `${coin}/${method}${ifFrom}${ifFromTo}${ifTid}${ifSince}`;
+    const url = `${coin}/trades${ifFrom}${ifFromTo}${ifTid}${ifSince}`;
+    console.log(url);
     const r = await this.repository.getDataCuston(url);
-    return r;
+
+    const result = r.map((trade) => ({
+      ...trade,
+      date: isDateToHuman ? ConvertDateToHuman(trade.date) : trade.date,
+      price: isFormatToHuman ? formatBRL(trade.price) : trade.price,
+    }));
+
+    return result;
   }
 
   async getOrderbook(coin = 'btc', isDateToHuman = false, isFormatToHuman = false, output = 'text', offers = 'full') {

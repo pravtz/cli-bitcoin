@@ -5,31 +5,57 @@ const Service = require('../../src/service');
 
 describe('Service Suit test', () => {
   const serviceMock = new Service(repositoryMock);
+  context('command default', () => {
+    it('should return the default object with no argument', async () => {
+      const serviceMockTicker = await serviceMock.getDefault();
+      expect(serviceMockTicker).to.be.equal(mock.mokeTicker);
+    });
 
-  it('should return the default object with no argument', async () => {
-    const serviceMockTicker = await serviceMock.getDefault();
-    expect(serviceMockTicker).to.be.equal(mock.mokeTicker);
+    it('should return the object with at least one of the arguments', async () => {
+      const serviceMockTicker1 = await serviceMock.getDefault('btc');
+      const serviceMockTicker2 = await serviceMock.getDefault('btc', 'trades');
+      const serviceMockTicker3 = await serviceMock.getDefault('', 'orderbook');
+
+      expect(serviceMockTicker1).to.be.equal(mock.mokeTicker);
+      expect(serviceMockTicker2).to.be.equal(mock.mokeTrades);
+      expect(serviceMockTicker3).to.be.equal(mock.mokeOrderbook);
+    });
+  });
+  context('command trades', () => {
+    it('should return trades between the informed date range', async () => {
+      const serviceMockTraderCustonFrom = await serviceMock.getTrades('1643020542', '1643020552');
+      expect(serviceMockTraderCustonFrom.toString())
+        .to.be.eq(mock.moketradesCustonFromAndFromTo.toString());
+    });
+    it('should return negotiations from the informed date', async () => {
+      const serviceMockTraderCustonFrom = await serviceMock.getTrades('1643020542');
+      expect(serviceMockTraderCustonFrom.toString())
+        .to.be.equal(mock.moketradesCustonFrom.toString());
+    });
+    it('should return trades from the tid identifier', async () => {
+      const serviceMockTraderCustonTid = await serviceMock.getTrades('', '', '12930657');
+      expect(serviceMockTraderCustonTid.toString())
+        .to.be.equal(mock.moketradesCustonTid.toString());
+    });
+    it('should return trades from the since identifier', async () => {
+      const serviceMockTraderCustonSince = await serviceMock.getTrades('', '', '', '12930657');
+      expect(serviceMockTraderCustonSince.toString())
+        .to.be.equal(mock.moketradesCustonSince.toString());
+    });
+    it('should return with the date in human format', async () => {
+      const serviceMockTrader = await serviceMock.getTrades('', '', '', '', 'btc', true);
+      const result = JSON.stringify(serviceMockTrader);
+      const expected = '17/08/2017 | 18:15::41';
+      expect(result.includes(expected)).to.be.true;
+    });
+    it('should return with the current money in human format', async () => {
+      const serviceMockTrader = await serviceMock.getTrades('', '', '', '', 'btc', 'false', true);
+      const result = JSON.stringify(serviceMockTrader);
+      const expected = 'R$';
+      expect(result.includes(expected)).to.be.true;
+    });
   });
 
-  it('should return the object with at least one of the arguments', async () => {
-    const serviceMockTicker1 = await serviceMock.getDefault('btc');
-    const serviceMockTicker2 = await serviceMock.getDefault('btc', 'trades');
-    const serviceMockTicker3 = await serviceMock.getDefault('', 'orderbook');
-
-    expect(serviceMockTicker1).to.be.equal(mock.mokeTicker);
-    expect(serviceMockTicker2).to.be.equal(mock.mokeTrades);
-    expect(serviceMockTicker3).to.be.equal(mock.mokeOrderbook);
-  });
-
-  it('should return the object when call getDataCuston', async () => {
-    const serviceMockTraderCustonFrom = await serviceMock.getTrades('btc', 'trades', '1643020542', '1643020552');
-    const serviceMockTraderCustonTid = await serviceMock.getTrades('btc', 'trades', '', '', '12930657');
-    const serviceMockTraderCustonSince = await serviceMock.getTrades('btc', 'trades', '', '', '', '12930657');
-
-    expect(serviceMockTraderCustonFrom).to.be.equal(mock.moketradesCustonFromAndFromTo);
-    expect(serviceMockTraderCustonTid).to.be.equal(mock.moketradesCustonTid);
-    expect(serviceMockTraderCustonSince).to.be.equal(mock.moketradesCustonSince);
-  });
   context('command ticker', () => {
     it('should return the ticker command in text with the date and currency in human format', async () => {
       const GetTicker = await serviceMock.getTicker('btc', true, true);
@@ -48,6 +74,13 @@ describe('Service Suit test', () => {
                         date: 17/01/2022 | 15:13::32`
         .replace(regex, '').replace(regex3, '');
       expect(GetTicker.replace(regex, '').replace(regex2, '')).to.be.equal(expedted);
+    });
+    it('should return json from data when called with argument output=json', async () => {
+      const GetTicker = await serviceMock.getTicker('btc', false, false, 'json');
+      const stringMokeGetTicker = JSON.stringify(GetTicker);
+      const ticker = JSON.stringify(mock.mokeTicker.ticker);
+
+      expect(stringMokeGetTicker).to.be.equal(ticker);
     });
   });
   context('command orderbook', () => {
@@ -113,13 +146,17 @@ describe('Service Suit test', () => {
       const dataOrderbookMock = await serviceMock.getOrderbook('btc', true, true, 'json', 'asks');
       const result = JSON.stringify(dataOrderbookMock);
       const expected = '{"timestamp":"17/01/2022 | 15:16::08.578","asks":[["R$';
+      const noExpected = 'bids":[["R$';
       expect(result.includes(expected)).to.be.true;
+      expect(result.includes(noExpected)).to.be.false;
     });
     it('should handle dates and currencies in json when called with bids argument', async () => {
       const dataOrderbookMock = await serviceMock.getOrderbook('btc', true, true, 'json', 'bids');
       const result = JSON.stringify(dataOrderbookMock);
       const expected = '{"timestamp":"17/01/2022 | 15:16::08.578","bids":[["R$';
+      const noExpected = '"asks":[["R$';
       expect(result.includes(expected)).to.be.true;
+      expect(result.includes(noExpected)).to.be.false;
     });
     it('should handle dates and currencies in json', async () => {
       const dataOrderbookMock = await serviceMock.getOrderbook('btc', true, true, 'json');
