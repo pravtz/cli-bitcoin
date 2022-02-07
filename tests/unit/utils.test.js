@@ -72,5 +72,8 @@ describe('Util Suit Test', () => {
       const result = '17/01/2022 | 15:16::08.578';
       expect(expected).to.be.equal(result);
     });
+    it('Should return an error when passing the date with the wrong format', () => {
+      expect(() => (ConvertDateUnixNanoSegundToDateToHuman(16409988610))).to.throw('erro no formato da data');
+    });
   });
 });
