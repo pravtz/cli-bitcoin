@@ -1,38 +1,10 @@
 #!/usr/bin/env node
-const inquirer = require('inquirer');
 const { program } = require('commander');
-
+const { order } = require('./orderInquirer');
 const pkg = require('../package.json');
 const Service = require('./service');
 
 const service = new Service();
-
-const listCoin = ['btc', 'eth'];
-const listMethod = ['ticker', 'orderbook', 'trades', 'day-summary'];
-
-const question = [
-  {
-    type: 'list', name: 'coin', message: 'Escolha a criptomoeda', choices: listCoin,
-  },
-  {
-    type: 'list', name: 'method', message: 'Escolha o metodo', choices: listMethod,
-  },
-  {
-    type: 'confirm', name: 'output', message: 'Saída em JSON?',
-  },
-
-];
-
-const order = () => {
-  inquirer
-    .prompt(question)
-    .then((answers) => {
-      service.getDefault(answers.coin, answers.method)
-        .then(
-          answers.output ? console.log : console.table,
-        );
-    });
-};
 
 program
   .version(pkg.version)
@@ -100,11 +72,15 @@ program
       .then(command.opts().output === 'table' ? console.table : console.log);
   })
   .addHelpText('after', `
-  Examples:
-  Livro de ofertas é composto por duas listas: (1) uma lista com as ofertas de compras ordenadas pelo maior valor; (2) uma lista com as ofertas de venda ordenadas pelo menor valor. O livro mostra até 1000 ofertas de compra e até 1000 ofertas de venda.
+  Conceito:
+  Livro de ofertas é composto por duas listas:
+    (1) uma lista com as ofertas de compras ordenadas pelo maior valor;
+    (2) uma lista com as ofertas de venda ordenadas pelo menor valor.
 
+  O livro mostra até 1000 ofertas de compra e até 1000 ofertas de venda.
   Uma oferta é constituída por uma ou mais ordens, sendo assim, a quantidade da oferta é o resultado da soma das quantidades das ordens de mesmo preço unitário. Caso uma oferta represente mais de uma ordem, a prioridade de execução se dá com base na data de criação da ordem, da mais antiga para a mais nova.
 
+  Exemplo do comando orderbook:
     $ cli-bitcoin orderbook
     $ cli-bitcoin orderbook -c eth
     $ cli-bitcoin orderbook --help
@@ -113,7 +89,7 @@ program
 program
   .command('trades [string]')
   .description('Histórico de negociações realizadas.')
-  .option('-C, --coin [coin]', 'Acrônimo da moeda digital [coin] ')
+  .option('-c, --coin [coin]', 'Acrônimo da moeda digital [coin] ')
   .option('-t, --tid [tid]', 'Tempo | Retorna até 1000 negociações a partir do identificador da negociação ')
   .option('-s, --since [since]', 'Desde | Retorna até 1000 negociações a partir do identificador da negociação ')
   .option('-f, --from [from]', 'Retorna até 1000 negociações a partir da data informada')
@@ -133,7 +109,7 @@ program
     return result.then(console.log);
   })
   .addHelpText('after', `
-  Examples:
+  Exemplos do comando trades:
 
     $ cli-bitcoin trades
     $ cli-bitcoin trades -c eth
@@ -146,23 +122,23 @@ program
   `);
 
 program
-  .command('day-summary [string]')
+  .command('day-summary [date]')
   .description('Resumo diário de negociações realizadas')
-  .option('-C, --coin [coin]', 'Acrônimo da moeda digital [coin] ')
-  .option('-d, --coin [data]', 'data')
-
+  .option('-c, --coin [coin]', 'Acrônimo da moeda digital [coin] ')
   .action((test, options, command) => {
-    console.log(command);
-    console.log(`Called '${command.name()}'`);
-    console.log(`args: ${command.args}`);
-    console.log('opts: %o', command.opts());
+    const YearMouthDay = `${command.args[0]},${command.args[1]},${command.args[2]}`;
+    const result = service.getDaySummary(YearMouthDay, command.opts().coin);
+    return result.then(console.log);
   })
   .addHelpText('after', `
-  Examples:
+  Resumo diário de negociações realizadas.
 
-    $ cli-bitcoin day-summary
-    $ cli-bitcoin day-summary -c eth
-    $ cli-bitcoin trades -d 2020 11 15
+  Após o comando day-summary e obrigatório passar três argumentos separados que referencia a data (ano mês dia)
+
+  Exemplos de day-summary:
+
+    $ cli-bitcoin trades 2020 11 15
+    $ cli-bitcoin trades 2020 11 15 -c eth
     $ cli-bitcoin trades --help
 
   `);

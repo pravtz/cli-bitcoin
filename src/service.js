@@ -27,7 +27,6 @@ class Service {
     const ifSince = since && !tid ? `/?since=${since}` : '';
 
     const url = `${coin}/trades${ifFrom}${ifFromTo}${ifTid}${ifSince}`;
-    console.log(url);
     const r = await this.repository.getDataCuston(url);
 
     const result = r.map((trade) => ({
@@ -39,7 +38,13 @@ class Service {
     return result;
   }
 
-  async getOrderbook(coin = 'btc', isDateToHuman = false, isFormatToHuman = false, output = 'text', offers = 'full') {
+  async getOrderbook(
+    coin = 'btc',
+    isDateToHuman = false,
+    isFormatToHuman = false,
+    output = 'text',
+    offers = 'full',
+  ) {
     const orderbookFull = await this.repository.getData(coin, 'orderbook');
     const { asks, bids, timestamp } = orderbookFull;
 
@@ -137,6 +142,12 @@ class Service {
       open: ${isFormatToHuman ? formatBRL(ticker.open) : ticker.open}
       date: ${isDateToHuman ? ConvertDateToHuman(ticker.date) : ticker.date}
     `;
+  }
+
+  async getDaySummary(day, coin = 'btc') {
+    const [y, m, d] = day.split(',');
+    const daySummary = await this.repository.getDataDaySummary(coin, y, m, d);
+    return daySummary;
   }
 }
 module.exports = Service;

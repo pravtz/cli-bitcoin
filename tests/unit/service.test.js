@@ -169,4 +169,11 @@ describe('Service Suit test', () => {
       expect(result.includes(expectedWithBids)).to.be.true;
     });
   });
+  context('command day-summary', () => {
+    it('should return the daily trades of the informed date', async () => {
+      const daySummaryMoke = await serviceMock.getDaySummary('2013,06,20');
+
+      expect(daySummaryMoke).to.be.equal(mock.mokeSaySummary);
+    });
+  });
 });
