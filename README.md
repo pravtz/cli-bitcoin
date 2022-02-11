@@ -1,8 +1,8 @@
-# cli-bitcoin
+# Cli Bitcoin
 
 Search for cryptocurrency information
 
-## RUM
+## 🖥  INSTALLING
 
 To get a global install of the latest CLI release.
 
@@ -10,6 +10,8 @@ To get a global install of the latest CLI release.
 npm install -g cli-bitcoin
 
 ```
+---
+## Helpers | Description | Version
 Command for help
 
 ```bash
@@ -27,114 +29,90 @@ Command to see the description
 cli-bitcoin --description
 ```
 
-command Basic (Default: coin=btc and method=ticker)
-With this command it is possible to see the summary of the last 24
-hours of trading with bitcoin currency
-
+---
+## 💎 HOW TO USE
+### Basic Command
+With this simple command it is possible to choose the method and currency in a very simple and intuitive way
 ```bash
 cli-bitcoin
 ```
 
+#### Choose cryptocurrency
 
-With "-m" it is possible to change the method of the main command
-Para saver quais os medodos suportados [verifique aqui](doc/coin)
+You can choose which cryptocurrency by passing a --coin \<ACRONYM> or -c \<ACRONYM> option. If no option is set by default and "btc".
+[See all accepted currency acronym arguments here](doc/coin)
+
+
+### Avanced Commands
+
+For more advanced information, learn about the following methods:
+
+* **TICKER**: Retorna informações com o resumo das últimas 24 horas de negociações. ___[Veja mais..](doc/ticker)___
+
+* **ORDERBOOK**: Order book made up of sell and buy orders. ___[Veja mais..](doc/orderbook)___
+
+* **TRADES**: Histórico de negociações realizadas. ___[Veja mais..](doc/trades)___
+
+* **DAY SUMMARY**: Returns daily summary of trades performed. ___[Veja mais..](doc/day-summary)___
+
+> USE:
+>
+> *$ cli-bitcoin \<methodo\> \[options\]*
+>
+>
+> >  See the "--help" for each method to learn more about the options available.
+
+
 ```bash
-cli-bitcoin -m ticker
-```
+# EXAMPLES
+cli-bitcoin ticker --help
 
-with -m it is possible to change the method of the main command
-```bash
-cli-bitcoin -c btc
-```
+cli-bitcoin ticker -c eth
 
-The -m and -c command can be combined
+# OR
 
-```bash
-cli-bitcoin -c btc -m ticker
-```
+cli-bitcoin orderbook --help
 
+cli-bitcoin orderbook -c btc
 
-#### Acronimos da moeda digital
+# OR
 
+cli-bitcoin trades --help
 
-### Ticker
-Descrição: Retorna informações com o resumo das últimas 24 horas de negociações.
+cli-bitcoin trades
 
-Resultado
- high: Maior preço unitário de negociação das últimas 24 horas.
-Tipo: Decimal
- low: Menor preço unitário de negociação das últimas 24 horas.
-Tipo: Decimal
- vol: Quantidade negociada nas últimas 24 horas.
-Tipo: Decimal
- last: Preço unitário da última negociação.
-Tipo: Decimal
- buy: Maior preço de oferta de compra das últimas 24 horas.
-Tipo: Decimal
- sell: Menor preço de oferta de venda das últimas 24 horas.
-Tipo: Decimal
- date: Data e hora da informação em Era Unix
-Tipo: Inteiro
-Exemplo de chamada:
+# OR
 
+cli-bitcoin day-summary --help
 
-### Orderbook
-Descrição: Livro de ofertas é composto por duas listas:
-- (1) uma lista com as ofertas de compras ordenadas pelo maior valor;
-- (2) uma lista com as ofertas de venda ordenadas pelo menor valor.
+cli-bitcoin day-summary
 
-O livro mostra até 1000 ofertas de compra e até 1000 ofertas de venda.
-
-Uma oferta é constituída por uma ou mais ordens, sendo assim, a quantidade da oferta é o resultado da soma das quantidades das ordens de mesmo preço unitário. Caso uma oferta represente mais de uma ordem, a prioridade de execução se dá com base na data de criação da ordem, da mais antiga para a mais nova.
-
-
-- bids: Lista de ofertas de compras, ordenadas do maior para o menor preço.
-  * [0]: Preço unitário da oferta de compra.
-  * [1]: Quantidade da oferta de compra.
-- asks: Lista de ofertas de venda, ordenadas do menor para o maior preço.
-  * [0]: Preço unitário da oferta de venda.
-  * [1]: Quantidade da oferta de venda.
-
-Exemplo de chamada:
-```json
-{
-    "asks": [
-        [10410.00006000, 2.09190016],
-        [10420.00000000, 0.00997000],
-        [10488.99999000, 0.46634897]
-    ],
-    "bids": [
-        [10405.38258000, 0.00181000],
-        [10393.84180000, 0.08387000]
-    ]
-}
 ```
 
 
 
-### Trades
-Descrição: Histórico de negociações realizadas.
-
-Resultado
- []: Lista de negociações realizadas.
-date: Data e hora da negociação em Era Unix
-Tipo: Decimal
-price: Preço unitário da negociação.
-Tipo: Decimal
-amount: Quantidade da negociação.
-Tipo: Decimal
-tid: Identificador da negociação.
-Tipo: Inteiro
-type: Indica a ponta executora da negociação
-Tipo: String
-Domínio de dados:
-buy : indica ordem de compra executora
-sell : indica ordem de venda executora
-Exemplo de chamada:
 
 
 
-## Dependesse
 
 
-https://www.mercadobitcoin.com.br/api-doc/#glossario-era-unix
+
+## Dependences used
+
+   * commander
+   * inquirer
+   * request
+
+## API used
+The data is a result of the [Mercado Bitcoin](https://www.mercadobitcoin.com.br/api-doc) public API. The **CLI BITCOIN** only serves as a facilitator to access this data via the command line.
+
+*
+
+
+## Contributing
+
+Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to us.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
