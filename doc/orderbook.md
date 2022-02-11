@@ -1,6 +1,6 @@
 # Cli-bitcoin
 
-[⬅ voltar](../README)
+[⬅ voltar](../)
 
 ## OrderBook
 

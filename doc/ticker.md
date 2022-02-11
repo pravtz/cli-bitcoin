@@ -1,7 +1,7 @@
 
 # Cli-bitcoin
 
-[⬅ back](../README)
+[⬅ back](../)
 
 ## Ticker
 
