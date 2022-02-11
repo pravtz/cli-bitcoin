@@ -6,6 +6,7 @@
   "scripts": {
     "clear": "rimraf bin",
     "build": "npm run clear && npx babel --out-dir bin src --presets=@babel/env",
+    "build:Symlink": "npm run build && npm link",
     "build:watch": "npm run build -- --watch",
     "lint": "./node_modules/.bin/eslint src/*.js",
     "test": "npx mocha -w --timeout 30000 tests/**/*.test.js",
@@ -19,6 +20,8 @@
     "type": "git",
     "url": "git+https://github.com/pravtz/cli-bitcoin.git"
   },
+  "files": ["bin","doc","LICENCE.md", "README.md"],
+  "homepage": "https://github.com/pravtz/cli-bitcoin.git#readme",
   "bin": {
     "cli-bitcoin": "bin/main.js"
   },
@@ -28,16 +31,14 @@
     "ethereum",
     "coin",
     "cryptocurrencies",
-    "traders",
-    "javascript",
-    "TDD",
-    "inquirer",
-    "commander",
-    "chai",
-    "js"
+    "trades",
+    "javascript"
   ],
-  "author": "@pravtz",
+  "author": "Ederson Pravtz <ederson.ufrgs@gmail.com> (https://github.com/pravtz)",
   "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/pravtz/cli-bitcoin.git/issues"
+  },
   "devDependencies": {
     "@babel/cli": "^7.16.8",
     "@babel/core": "^7.16.7",
