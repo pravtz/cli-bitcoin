@@ -40,20 +40,20 @@ cli-bitcoin
 #### Choose cryptocurrency
 
 You can choose which cryptocurrency by passing a --coin \<ACRONYM> or -c \<ACRONYM> option. If no option is set by default and "btc".
-[See all accepted currency acronym arguments here](doc/coin.md)
+[See all accepted currency acronym arguments here](#list-acronym)
 
 
 ### Avanced Commands
 
 For more advanced information, learn about the following methods:
 
-* **TICKER**: Returns information with the summary of the last 24 hours of trading. ___[Veja mais..](doc/ticker.md)___
+* **TICKER**: Returns information with the summary of the last 24 hours of trading. ___[Veja mais..](#ticker)___
 
-* **ORDERBOOK**: Order book made up of sell and buy orders. ___[Veja mais..](doc/orderbook.md)___
+* **ORDERBOOK**: Order book made up of sell and buy orders. ___[Veja mais..](#orderbook)___
 
-* **TRADES**: History of trades carried out. ___[Veja mais..](doc/trades.md)___
+* **TRADES**: History of trades carried out. ___[Veja mais..](#trades)___
 
-* **DAY SUMMARY**: Returns daily summary of trades performed. ___[Veja mais..](doc/day-summary.md)___
+* **DAY SUMMARY**: Returns daily summary of trades performed. ___[Veja mais..](#day-summary)___
 
 > USE:
 >
@@ -311,9 +311,11 @@ Options:
 ```
 
  You can choose which cryptocurrency by passing a --coin \<ACRONYM> or -c \<ACRONYM> option. If no option is set by default and "btc".
-[See all accepted currency acronym arguments here](doc/coin.md)
+[See all accepted currency acronym arguments here](#list-acronym)
 
 ---
+
+## List Acronym
 
 | ACRONYM | CURRENCY |
 |-----------------|-----------------|
