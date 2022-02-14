@@ -1,8 +1,8 @@
 {
   "name": "cli-bitcoin",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Search for cryptocurrency information",
-  "main": "index.js",
+  "main": "bin/main.js",
   "scripts": {
     "clear": "rimraf bin",
     "build": "npm run clear && npx babel --out-dir bin src --presets=@babel/env",
