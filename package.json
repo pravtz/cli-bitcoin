@@ -1,6 +1,6 @@
 {
   "name": "cli-bitcoin",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Search for cryptocurrency information",
   "main": "bin/main.js",
   "scripts": {
@@ -20,7 +20,15 @@
     "type": "git",
     "url": "git+https://github.com/pravtz/cli-bitcoin.git"
   },
-  "files": ["bin","doc","LICENCE.md", "README.md","babel.config.json", "node_modules", "package.json"],
+  "files": [
+    "bin",
+    "doc",
+    "LICENCE.md",
+    "README.md",
+    "babel.config.json",
+    "node_modules",
+    "package.json"
+  ],
   "homepage": "https://github.com/pravtz/cli-bitcoin.git#readme",
   "bin": {
     "cli-bitcoin": "bin/main.js"
@@ -44,7 +52,7 @@
     "@babel/core": "^7.16.7",
     "@babel/plugin-transform-runtime": "^7.16.8",
     "@babel/preset-env": "^7.16.8",
-    "@babel/runtime": "^7.16.7",
+    "@babel/runtime": "^7.17.2",
     "babel-core": "^6.26.3",
     "babel-loader": "^8.2.3",
     "babel-polyfill": "^6.26.0",
