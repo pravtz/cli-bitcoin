@@ -20,7 +20,7 @@
     "type": "git",
     "url": "git+https://github.com/pravtz/cli-bitcoin.git"
   },
-  "files": ["bin","doc","LICENCE.md", "README.md"],
+  "files": ["bin","doc","LICENCE.md", "README.md","babel.config.json", "node_modules", "package.json"],
   "homepage": "https://github.com/pravtz/cli-bitcoin.git#readme",
   "bin": {
     "cli-bitcoin": "bin/main.js"
